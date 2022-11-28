@@ -43,6 +43,10 @@ public class Post {
         this.published = published;
     }
 
+    public Post() {
+
+    }
+
     public Long getId() {
         return id;
     }
