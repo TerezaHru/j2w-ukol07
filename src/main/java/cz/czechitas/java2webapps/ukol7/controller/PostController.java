@@ -26,8 +26,8 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public Object seznam() {
-        return new ModelAndView("seznam")
+    public Object index() {
+        return new ModelAndView("index")
                 .addObject("posts", postRepository.findAll());
     }
 }
