@@ -1,11 +1,17 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-    <meta charset="UTF-8">
-    <title>Můj blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-    <h1>Tady bude můj blog…</h1>
-</body>
-</html>
+[#ftl]
+<h1>Seznam článků</h1>
+
+[#list index.content]
+
+
+        <body>
+        [#items as post]
+
+            ${post.author}
+            ${post.title}
+            ${post.perex}
+            ${post.body}
+        [/#items]
+        </body>
+    <div>Seznam je prázdný.</div>
+[/#list]

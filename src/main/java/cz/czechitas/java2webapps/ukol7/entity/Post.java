@@ -34,7 +34,7 @@ public class Post {
 
     private Date published;
 
-
+/*
     public Post(String author, String title, String perex, String body, Date published) {
         this.author = author;
         this.title = title;
@@ -42,7 +42,7 @@ public class Post {
         this.body = body;
         this.published = published;
     }
-
+*/
     public Post() {
 
     }

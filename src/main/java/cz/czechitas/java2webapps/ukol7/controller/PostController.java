@@ -1,8 +1,11 @@
 package cz.czechitas.java2webapps.ukol7.controller;
 
         import cz.czechitas.java2webapps.ukol7.repository.PostRepository;
+        import cz.czechitas.java2webapps.ukol7.service.PostService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+        import org.springframework.data.domain.Pageable;
+        import org.springframework.data.web.PageableDefault;
         import org.springframework.stereotype.Controller;
         import org.springframework.web.bind.WebDataBinder;
         import org.springframework.web.bind.annotation.GetMapping;
@@ -11,8 +14,18 @@ package cz.czechitas.java2webapps.ukol7.controller;
         import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class PostController {
+//
+    private final PostService service;
+    public  PostController(PostService service) {this.service = service; }
+    @GetMapping("/")
+    public ModelAndView zakladniSeznam(@PageableDefault() Pageable pageable) {
+     return new ModelAndView("index")
+                .addObject("index", service.seznamPost(pageable));
+    }
+
+    /*
     private final PostRepository postRepository;
 
     @Autowired
@@ -30,4 +43,9 @@ public class PostController {
         return new ModelAndView("index")
                 .addObject("posts", postRepository.findAll());
     }
+
+    */
+
+
+
 }
