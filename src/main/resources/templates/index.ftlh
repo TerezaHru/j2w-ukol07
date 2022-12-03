@@ -3,15 +3,24 @@
 
 [#list index.content]
 
+    <table class="u-full-width">
+    <thead>
+    <tr>
+        <th>Název článku</th>
 
-        <body>
+    </tr>
+    </thead>
+        <tbody>
         [#items as post]
+        <tr>
 
-            ${post.author}
-            ${post.title}
-            ${post.perex}
-            ${post.body}
+            <td>${post.title}</td>
+
+        </tr>
         [/#items]
-        </body>
+        </tbody>
+    </table>
+[#else]
     <div>Seznam je prázdný.</div>
 [/#list]
+<div class="totalCount">Celkem nalezeno ${index.totalElements} záznamů.</div>
