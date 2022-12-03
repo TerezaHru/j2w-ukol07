@@ -1,17 +1,16 @@
 [#ftl]
+
 <h1>Seznam článků</h1>
 
 [#list index.content]
 
     <table class="u-full-width">
-    <thead>
-    <tr>
-        <th>Název článku</th>
 
-    </tr>
-    </thead>
+    <td><b>Název článku</b></td>
+
         <tbody>
         [#items as post]
+
         <tr>
 
             <td>${post.title}</td>

@@ -4,6 +4,7 @@ import cz.czechitas.java2webapps.ukol7.entity.Post;
 import cz.czechitas.java2webapps.ukol7.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +23,9 @@ public class PostService {
     /**
      * Vrací stránkovaný seznam všech osob v databázi seřazených podle příjmení a jména.
      */
+
     public Page<Post> seznamPost (Pageable pageable) {
+       pageable = PageRequest.of(0, 5);
         return postRepository.findAll(pageable);
     }
 
