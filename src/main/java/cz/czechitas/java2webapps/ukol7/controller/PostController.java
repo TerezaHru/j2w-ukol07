@@ -62,22 +62,11 @@ public class PostController {
             return modelAndView;
         }
         else{
-            throw new ResponseStatusException(NOT_FOUND, "404 not found - Vizitka nenalezena.");
+            throw new ResponseStatusException(NOT_FOUND, "404 not found - nenalezeno.");
         }
     }
 }
 
-    /*
-    private PostRepository postRepository;
-
-    @Autowired
-    public PostController(PostRepository postRepository) {
-        this.postRepository = postRepository;
-    }
-    @InitBinder
-    public void nullStringBinding(WebDataBinder binder) {
-        //prázdné textové řetězce nahradit null hodnotou
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 
 
 
