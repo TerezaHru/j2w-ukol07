@@ -1,5 +1,6 @@
 package cz.czechitas.java2webapps.ukol7.controller;
 
+        import cz.czechitas.java2webapps.ukol7.entity.Post;
         import cz.czechitas.java2webapps.ukol7.repository.PostRepository;
         import cz.czechitas.java2webapps.ukol7.service.PostService;
         import org.springframework.beans.factory.annotation.Autowired;
@@ -10,22 +11,35 @@ package cz.czechitas.java2webapps.ukol7.controller;
         import org.springframework.web.bind.WebDataBinder;
         import org.springframework.web.bind.annotation.GetMapping;
         import org.springframework.web.bind.annotation.InitBinder;
+        import org.springframework.web.bind.annotation.PathVariable;
         import org.springframework.web.bind.annotation.RequestMapping;
+        import org.springframework.web.server.ResponseStatusException;
         import org.springframework.web.servlet.ModelAndView;
 
+        import java.util.Optional;
+
+        import static org.springframework.http.HttpStatus.NOT_FOUND;
+
 @Controller
-//@RequestMapping("/")
+@RequestMapping("/")
 public class PostController {
-//
-    private final PostService service;
-    public  PostController(PostService service) {this.service = service; }
+    private PostService service;
+
+    public PostController(PostService service) {
+        this.service = service;
+    }
+
     @GetMapping("/")
     public ModelAndView zakladniSeznam(@PageableDefault() Pageable pageable) {
-     return new ModelAndView("index")
+        return new ModelAndView("index")
                 .addObject("index", service.seznamPost(pageable));
     }
 
-    /*
+    @GetMapping("/detail/{id}")
+    public String detail() {
+        return "detail";
+    }
+ /*
     private final PostRepository postRepository;
 
     @Autowired
@@ -38,14 +52,40 @@ public class PostController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
-    @GetMapping("/")
-    public Object index() {
-        return new ModelAndView("index")
-                .addObject("posts", postRepository.findAll());
+
+    @GetMapping("/detail/{id}")
+    public ModelAndView detail(@PathVariable int id) {
+        ModelAndView modelAndView = new ModelAndView("detail");
+
+        Optional<Post> optionalpost = postRepository.findById(new Long(id));
+
+        if(optionalpost.isPresent()) {
+            Post post = optionalpost.get();
+            modelAndView.addObject("post", post);
+            return modelAndView;
+        }
+        else{
+            throw new ResponseStatusException(NOT_FOUND, "404 not found - Vizitka nenalezena.");
+        }
     }
+}
 
-    */
+    /*
+    private PostRepository postRepository;
+
+    @Autowired
+    public PostController(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
+    @InitBinder
+    public void nullStringBinding(WebDataBinder binder) {
+        //prázdné textové řetězce nahradit null hodnotou
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
 
 
+
+
+*/
 
 }
+
