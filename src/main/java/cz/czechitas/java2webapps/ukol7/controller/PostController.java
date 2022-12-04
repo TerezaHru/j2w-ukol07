@@ -16,14 +16,11 @@ package cz.czechitas.java2webapps.ukol7.controller;
         import org.springframework.web.server.ResponseStatusException;
         import org.springframework.web.servlet.ModelAndView;
 
-        import java.util.Optional;
-
-        import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @Controller
 @RequestMapping("/")
 public class PostController {
-    private PostService service;
+    private final PostService service;
 
     public PostController(PostService service) {
         this.service = service;
