@@ -25,7 +25,7 @@ public class PostService {
      */
 
     public Page<Post> seznamPost (Pageable pageable) {
-       pageable = PageRequest.of(0, 5);
+       pageable = PageRequest.of(0,20);
         return postRepository.findAll(pageable);
     }
 

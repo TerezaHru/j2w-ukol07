@@ -6,6 +6,7 @@ package cz.czechitas.java2webapps.ukol7.controller;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.beans.propertyeditors.StringTrimmerEditor;
         import org.springframework.data.domain.Pageable;
+        import org.springframework.data.domain.Sort;
         import org.springframework.data.web.PageableDefault;
         import org.springframework.stereotype.Controller;
         import org.springframework.web.bind.WebDataBinder;
@@ -26,7 +27,7 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public ModelAndView zakladniSeznam(@PageableDefault() Pageable pageable) {
+    public ModelAndView zakladniSeznam(@PageableDefault(sort = {"published"}, direction = Sort.Direction.DESC) Pageable pageable) {
         return new ModelAndView("index")
                 .addObject("index", service.seznamPost(pageable));
     }
