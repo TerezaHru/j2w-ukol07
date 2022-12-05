@@ -18,7 +18,6 @@ package cz.czechitas.java2webapps.ukol7.controller;
 
 
 @Controller
-@RequestMapping("/")
 public class PostController {
     private final PostService service;
 
@@ -32,11 +31,21 @@ public class PostController {
                 .addObject("index", service.seznamPost(pageable));
     }
 
+    @Autowired
+    private PostRepository postReporitory;
+    @GetMapping("/detail/{id}")
+    public ModelAndView detailPostu(@PathVariable Long id) {
+        return new ModelAndView("detail")
+                .addObject("post", postReporitory.getReferenceById(id));
+    }
+/*
     @GetMapping("/detail/{id}")
     public String detail() {
         return "detail";
     }
- /*
+
+ */
+    /*
     private final PostRepository postRepository;
 
     @Autowired
