@@ -27,7 +27,7 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public ModelAndView zakladniSeznam(@PageableDefault(sort = {"published"}, direction = Sort.Direction.DESC) Pageable pageable) {
+    public ModelAndView zakladniSeznam(@PageableDefault(page = 0, size=20, sort = {"published"}, direction = Sort.Direction.DESC) Pageable pageable) {
         return new ModelAndView("index")
                 .addObject("index", service.seznamPost(pageable));
     }

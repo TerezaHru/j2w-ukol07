@@ -20,12 +20,7 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
-    /**
-     * Vrací stránkovaný seznam všech osob v databázi seřazených podle příjmení a jména.
-     */
-
     public Page<Post> seznamPost (Pageable pageable) {
-       pageable = PageRequest.of(0,20);
         return postRepository.findAll(pageable);
     }
 
