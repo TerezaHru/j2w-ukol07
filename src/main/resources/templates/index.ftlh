@@ -8,7 +8,7 @@
 
         <td><b>Název článku</b></td>
         <td><b>Obsah</b></td>
-        <td><b>Napsal</b></td>
+        <td><b>Datum</b></td>
         <td><b>Autor</b></td>
         <tbody>
         [#items as post]
