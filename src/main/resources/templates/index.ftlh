@@ -3,19 +3,23 @@
 <h1>Seznam článků</h1>
 
 [#list index.content]
-
-    <table class="u-full-width">
-
-    <td><b>Název článku</b></td>
-        <td><b>Vydáno</b></td>
+    <table border = "1">
+        <thead>
+        <tr>
+        <th><b>Název článku</b></th>
+        <th><b>Obsah</b></th>
+        <th><b>Datum</b></th>
+        <th><b>Autor</b></th>
+        </tr>
         <tbody>
         [#items as post]
 
         <tr>
-            <td><a href="/detail/${post.id}">${post.id}</a></td>
-            <td>${post.title}</td>
+            <td>${(post.title)?no_esc}</td>
+            <td>${(post.perex)?no_esc}</td>
             <td>${post.published}</td>
-
+            <td>${(post.author)?no_esc}</td>
+            <td><a href="/post/${post.slug}">Přečíst</td>
         </tr>
         [/#items]
         </tbody>

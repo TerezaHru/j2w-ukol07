@@ -30,19 +30,13 @@ public class Post {
     private String perex;
 
     @NotNull
+    private String slug;
+
+    @NotNull
     private String body;
 
     private Date published;
 
-/*
-    public Post(String author, String title, String perex, String body, Date published) {
-        this.author = author;
-        this.title = title;
-        this.perex = perex;
-        this.body = body;
-        this.published = published;
-    }
-*/
     public Post() {
 
     }
@@ -93,5 +87,13 @@ public class Post {
 
     public void setPublished(Date published) {
         this.published = published;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(Date published) {
+        this.slug = slug;
     }
 }
