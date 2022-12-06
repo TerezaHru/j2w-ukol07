@@ -1,6 +1,5 @@
 package cz.czechitas.java2webapps.ukol7.controller;
 
-        import cz.czechitas.java2webapps.ukol7.entity.Post;
         import cz.czechitas.java2webapps.ukol7.repository.PostRepository;
         import cz.czechitas.java2webapps.ukol7.service.PostService;
         import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +26,9 @@ public class PostController {
     }
     @Autowired
     private PostRepository postReporitory;
-    @GetMapping("/detail/{slug}")
+    @GetMapping("/post/{slug}")
     public ModelAndView detailPostu(@PathVariable String slug) {
-        return new ModelAndView("detail")
+        return new ModelAndView("post")
                 .addObject("post", postReporitory.singlePost(slug));
     }
 
