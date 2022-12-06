@@ -10,7 +10,7 @@
             <div>${post.published}</div>
             <div>${(post.author)?no_esc}</div>
         </div>
-
+<br>
         <div><a href="/">Zpět na původní stránku</div>
 
     </body>
