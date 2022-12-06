@@ -14,11 +14,11 @@
         [#items as post]
 
         <tr>
-            <td>${post.title}</td>
-            <td>${post.perex}</td>
+            <td>${(post.title)?no_esc}</td>
+            <td>${(post.perex)?no_esc}</td>
             <td>${post.published}</td>
-            <td>${post.author}</td>
-            <td><a href="/detail/${post.slug}">Přečíst</td>
+            <td>${(post.author)?no_esc}</td>
+            <td><a href="/post/${post.slug}">Přečíst</td>
         </tr>
         [/#items]
         </tbody>
