@@ -14,6 +14,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("SELECT p FROM Post p WHERE (p.published) <= (CURRENT_TIMESTAMP)")
     Page<Post> findByDatumBefore(LocalDate datum, Pageable pageable);
 
+    @Query("SELECT p FROM Post p WHERE (p.slug) = :slug")
+    Post singlePost(@Param("slug") String slug);
+
 
 }
 

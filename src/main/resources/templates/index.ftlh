@@ -6,16 +6,19 @@
 
     <table class="u-full-width">
 
-    <td><b>Název článku</b></td>
-        <td><b>Vydáno</b></td>
+        <td><b>Název článku</b></td>
+        <td><b>Obsah</b></td>
+        <td><b>Napsal</b></td>
+        <td><b>Autor</b></td>
         <tbody>
         [#items as post]
 
         <tr>
-            <td><a href="/detail/${post.id}">${post.id}</a></td>
             <td>${post.title}</td>
+            <td>${post.perex}</td>
             <td>${post.published}</td>
-
+            <td>${post.author}</td>
+            <td><a href="/detail/${post.slug}">Přečíst</td>
         </tr>
         [/#items]
         </tbody>
