@@ -3,13 +3,14 @@
 <h1>Seznam článků</h1>
 
 [#list index.content]
-
-    <table class="u-full-width">
-
-        <td><b>Název článku</b></td>
-        <td><b>Obsah</b></td>
-        <td><b>Datum</b></td>
-        <td><b>Autor</b></td>
+    <table border = "1">
+        <thead>
+        <tr>
+        <th><b>Název článku</b></th>
+        <th><b>Obsah</b></th>
+        <th><b>Datum</b></th>
+        <th><b>Autor</b></th>
+        </tr>
         <tbody>
         [#items as post]
 
