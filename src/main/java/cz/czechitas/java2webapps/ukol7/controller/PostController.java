@@ -17,20 +17,41 @@ package cz.czechitas.java2webapps.ukol7.controller;
         import org.springframework.web.server.ResponseStatusException;
         import org.springframework.web.servlet.ModelAndView;
 
+        import java.time.LocalDate;
+        import java.util.Date;
+
 
 @Controller
 public class PostController {
     private final PostService service;
-
-    public PostController(PostService service) {
-        this.service = service;
-    }
-
+/*
     @GetMapping("/")
     public ModelAndView zakladniSeznam(@PageableDefault(page = 0, size=20, sort = {"published"}, direction = Sort.Direction.DESC) Pageable pageable) {
         return new ModelAndView("index")
                 .addObject("index", service.seznamPost(pageable));
     }
+*/
+    @GetMapping("/")
+    public ModelAndView zakladniSeznam(@PageableDefault(page = 0, size=20, sort = {"published"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        return new ModelAndView("index")
+                .addObject("index", service.seznamPost(pageable));
+    }
+    public PostController(PostService service) {
+        this.service = service;
+    }
+    @GetMapping("/a")
+    public ModelAndView zkracenySeznam(LocalDate date, @PageableDefault(page = 0, size=20, sort = {"published"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        return new ModelAndView("a")
+                .addObject("a", service.seznamDleZverejneni(date, pageable));
+    }
+    /*
+    @GetMapping("/a")
+    public ModelAndView omezenySeznam(LocalDate datum, @PageableDefault(page = 0, size=20, sort = {"published"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        return new ModelAndView("a")
+                .addObject("a", service.seznamDleZverejneni(datum, pageable));
+    }
+*/
+
 
     @Autowired
     private PostRepository postReporitory;
